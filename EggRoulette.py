@@ -21,7 +21,10 @@ class EggRoulette(Frame):
 
     def animations(self):
 
-        self.staticperson =
+        root = Tk()
+        photo = PhotoImage(file="path/to/image.gif")
+        label = Label(image=photo)
+        label.pack()
 
     def roulette(self):
 
