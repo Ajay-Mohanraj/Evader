@@ -1,6 +1,6 @@
 from tkinter import *
 import random
-
+import
 
 class EggRoulette(Frame):
 
@@ -21,7 +21,6 @@ class EggRoulette(Frame):
 
     def animations(self):
 
-        root = Tk()
         photo = PhotoImage(file="path/to/image.gif")
         label = Label(image=photo)
         label.pack()
@@ -36,7 +35,10 @@ class EggRoulette(Frame):
             return True
 
     def endGame(self):
-        # insert GIFs
+
+        print('Please come again!')
+
+
 
 
 root = Tk()
