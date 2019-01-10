@@ -14,7 +14,7 @@ class EggRoulette(Frame):
         self.create_game()
 
     def create_game(self):
-        imageEgg = PhotoImage(file="egg.ppm")
+        imageEgg = PhotoImage(file="egg2.gif")
         w = Label(self, image=imageEgg)
         w.photo = imageEgg
         w.grid(row=2, column=1, columnspan=3)
