@@ -14,7 +14,7 @@ class EggRoulette(Frame):
         self.create_game()
 
     def create_game(self):
-        imageEgg = PhotoImage(file="egg.jpg")
+        imageEgg = PhotoImage(file="egg.ppm")
         w = Label(self, image=imageEgg)
         w.photo = imageEgg
         w.grid(row=2, column=1, columnspan=3)
@@ -42,7 +42,6 @@ class EggRoulette(Frame):
 
     def endGame(self):
         exit()
-
 
 root = Tk()
 root.title("Egg Roulette")
