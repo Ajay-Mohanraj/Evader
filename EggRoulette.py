@@ -19,10 +19,7 @@ class EggRoulette(Frame):
         w.photo = imageEgg
         w.grid(row=2, column=1, columnspan=3)
 
-        self.bttn1 = Button(self, text="Press for egg")
-        self.bttn1["command"] = self.roulette()
 
-        self.bttn1.grid(self, column=0, row=0, )
 
     def animations(self):
 
