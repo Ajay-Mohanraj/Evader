@@ -25,7 +25,6 @@ class EggRoulette(Frame):
         self.bttn1.grid(self, column=0, row=0, )
 
     def animations(self):
-        root = Tk()
         photo = PhotoImage(file="path/to/image.gif")
         label = Label(image=photo)
         label.pack()
