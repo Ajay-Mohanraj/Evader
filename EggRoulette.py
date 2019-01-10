@@ -3,15 +3,16 @@ import random
 from PIL import Image
 
 
+
 class EggRoulette(Frame):
 
     def __init__(self, master):
 
         super(EggRoulette, self).__init__(master)
+        self.eggs = ["boiled", "boiled", "boiled", "boiled", "boiled", "raw"]
 
         self.grid()
         self.create_game()
-        self.eggs = ["boiled", "boiled", "boiled", "boiled", "boiled", "raw"]
 
     def create_game(self):
 
@@ -40,9 +41,9 @@ class EggRoulette(Frame):
 
     def endGame(self):
         # insert GIFs
-
+        return 0
 
 root = Tk()
 root.title("Egg Roulette")
-game = EggRoulette()
+game = EggRoulette(root)
 root.mainloop()
