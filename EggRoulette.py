@@ -1,6 +1,5 @@
 from tkinter import *
 import random
-from PIL import Image
 
 
 
@@ -15,10 +14,10 @@ class EggRoulette(Frame):
         self.create_game()
 
     def create_game(self):
-
-        Egg = Image.open("egg.jpg")
-        for x in range(len(self.eggs)):
-            Egg.show()
+        imageEgg = PhotoImage(file="egg.jpg")
+        w = Label(self, image=imageEgg)
+        w.photo = imageEgg
+        w.grid(row=2, column=1, columnspan=3)
 
         self.bttn1 = Button(self, text="Press for egg")
         self.bttn1["command"] = self.roulette()
