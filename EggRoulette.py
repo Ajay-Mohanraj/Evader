@@ -44,5 +44,5 @@ class EggRoulette(Frame):
 
 root = Tk()
 root.title("Egg Roulette")
-game = EggRoulette()
+game = EggRoulette(root)
 root.mainloop()
