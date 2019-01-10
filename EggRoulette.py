@@ -26,8 +26,9 @@ class EggRoulette(Frame):
 
     def animations(self):
         photo = PhotoImage(file="path/to/image.gif")
-        label = Label(image=photo)
-        label.pack()
+        photo.grid()
+        #label = Label(image=photo)
+        #label.pack()
 
     def roulette(self):
 
@@ -39,8 +40,13 @@ class EggRoulette(Frame):
             return True
 
     def endGame(self):
+<<<<<<< HEAD
         # insert GIFs
         return 0
+=======
+         exit()
+
+>>>>>>> origin/master
 
 root = Tk()
 root.title("Egg Roulette")
