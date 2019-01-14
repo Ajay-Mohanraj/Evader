@@ -1,34 +1,43 @@
-# import the pygame module, so you can use it
 import pygame
+from pygame import *
 
 
-# define a main function
-def main():
-    # initialize the pygame module
-    pygame.init()
-    # load and set the logo
-    logo = pygame.image.load("egg.jpg")
-    pygame.display.set_icon(logo)
-    pygame.display.set_caption("minimal program")
+class App(object):
+    def __init__(self):
+        self._running = True
+        self._display_surf = None
+        self.size = self.weight, self.height = 640, 400
 
-    # create a surface on screen that has the size of 240 x 180
-    pygame.display.set_mode((240, 180))
+    def on_init(self):
+        pygame.init()
+        self._display_surf = pygame.display.set_mode(self.size, pygame.HWSURFACE | pygame.DOUBLEBUF)
+        self._running = True
 
-    # define a variable to control the main loop
-    running = True
+    def on_event(self, event):
+        if event.type == pygame.QUIT:
+            self._running = False
 
-    # main loop
-    while running:
-        # event handling, gets all event from the event queue
-        for event in pygame.event.get():
-            # only do something if the event is of type QUIT
-            if event.type == pygame.QUIT:
-                # change the value to False, to exit the main loop
-                running = False
+    def on_loop(self):
+        pass
+
+    def on_render(self):
+        pass
+
+    def on_cleanup(self):
+        pygame.quit()
+
+    def on_execute(self):
+        if self.on_init() == False:
+            self._running = False
+
+        while (self._running):
+            for event in pygame.event.get():
+                self.on_event(event)
+            self.on_loop()
+            self.on_render()
+        self.on_cleanup()
 
 
-# run the main function only if this module is executed as the main script
-# (if you import this as a module then nothing is executed)
 if __name__ == "__main__":
-    # call the main function
-    main()
+    theApp = App()
+    theApp.on_execute()
