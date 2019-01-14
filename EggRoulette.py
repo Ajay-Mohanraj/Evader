@@ -1,4 +1,4 @@
-import pygame
+from pygame import *
 import random
 
 class EggRoulette(object):
