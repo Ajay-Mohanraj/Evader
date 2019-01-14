@@ -1,12 +1,37 @@
 import pygame
-from pygame import *
-
+import random
 
 class App(object):
     def __init__(self):
+        pygame.init()
+        self.eggs = ["boiled", "boiled", "boiled", "boiled", "boiled", "raw"]
+        self.make_bttn()
         self._running = True
         self._display_surf = None
         self.size = self.weight, self.height = 640, 400
+
+    def roulette(self):
+        thing = random.choice(self.eggs)
+        if thing == "raw":
+            self.endGame()
+        else:
+            self.eggs.remove("boiled")
+            return True
+
+    def make_bttn(self):
+        mouse = pygame.mouse.get_pos()
+
+        if 150 + 100 > mouse[0] > 150 and 450 + 50 > mouse[1] > 450:
+            pygame.draw.rect(gameDisplay, bright_green, (150, 450, 100, 50))
+        else:
+            pygame.draw.rect(gameDisplay, "green", (150, 450, 100, 50))
+        pygame.display.update()
+
+
+    def endGame(self):
+        pic = pygame.image.load("ohya.jpg")
+        pygame.display.set_icon(pic)
+        pygame.display.set_caption("YOU GOT EGGED!")
 
     def on_init(self):
         pygame.init()
