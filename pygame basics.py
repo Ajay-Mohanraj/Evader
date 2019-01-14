@@ -1,12 +1,14 @@
+import random
 import pygame
-from pygame import *
 
 
 class App(object):
+
     def __init__(self):
         self._running = True
         self._display_surf = None
         self.size = self.weight, self.height = 640, 400
+
 
     def on_init(self):
         pygame.init()
@@ -31,7 +33,9 @@ class App(object):
             self._running = False
 
         while (self._running):
+
             for event in pygame.event.get():
+
                 self.on_event(event)
             self.on_loop()
             self.on_render()
