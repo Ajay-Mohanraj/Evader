@@ -6,14 +6,14 @@ def main():
     pygame.init()
     clock = pygame.time.Clock()
     fps = 60
-    size = [200, 200]
+    size = [1500, 1500]
     bg = [255, 255, 255]
 
     screen = pygame.display.set_mode(size)
 
     button = pygame.Rect(100, 100, 50, 50)  # creates a rect object
     # The rect method is similar to a list but with a few added perks
-    # for example if you want the position of the button you can simpy type
+    # for example if you want the position of the button you can simply type
     # button.x or button.y or if you want size you can type button.width or
     # height. you can also get the top, left, right and bottom of an object
     # with button.right, left, top, and bottom
