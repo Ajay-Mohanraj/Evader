@@ -34,7 +34,7 @@ while run:
 
         x += vel
 
-    if not(isJump):
+    """ if not(isJump):
 
         if keys[pygame.K_UP] and y > vel:
 
@@ -65,10 +65,11 @@ while run:
 
             isJump = False
             jumpCount = 10
+        """
 
     player = pygame.image.load("ohya.jpg")
     win.fill((255, 255, 255))
     win.blit(player, (x, y))
     pygame.display.update()
 
-pygame.quit() 1
+pygame.quit()
