@@ -1,11 +1,10 @@
 import pygame
 import random
-import sys
+
 
 boiled_egg = pygame.image.load("egg.jpg")
 raw_egg = pygame.image.load("raw_egg.jpg")
 eggs = ["boiled", "boiled", "boiled", "boiled", "boiled", "raw"]
-
 
 def press_button(screen, button):
     while True:
@@ -65,4 +64,4 @@ if __name__ == '__main__':
 
     main()
     pygame.quit()
-    sys.exit()
+

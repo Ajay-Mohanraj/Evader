@@ -1,5 +1,4 @@
 import pygame
-import sys
 
 
 def main():
@@ -44,7 +43,5 @@ def main():
         clock.tick(fps)
 
 
-if __name__ == '__main__':
-    main()
-    pygame.quit()
-    sys.exit()
+main()
+pygame.quit()

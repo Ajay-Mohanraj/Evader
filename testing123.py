@@ -66,8 +66,9 @@ while run:
             isJump = False
             jumpCount = 10
 
+    player = pygame.image.load("ohya.jpg")
     win.fill((255, 255, 255))
-    pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
+    win.blit(player, (x, y))
     pygame.display.update()
 
 pygame.quit() 1
