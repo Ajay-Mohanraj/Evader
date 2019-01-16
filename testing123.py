@@ -4,11 +4,12 @@ pygame.init()
 win = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('First Game')
 
+class
 x = 210
 y = 400
 width = 40
 height = 60
-vel = 5
+vel = 15
 
 isJump = False
 jumpCount = 10
@@ -75,5 +76,9 @@ while run:
     win.fill((255, 255, 255))
     win.blit(player, (x, y))
     pygame.display.update()
-
 pygame.quit()
+
+class Enemy(object):
+
+    def __init__(self):
+
