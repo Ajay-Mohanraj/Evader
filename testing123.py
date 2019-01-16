@@ -4,8 +4,8 @@ pygame.init()
 win = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('First Game')
 
-x = 50
-y = 425
+x = 210
+y = 400
 width = 40
 height = 60
 vel = 5
@@ -31,10 +31,14 @@ while run:
         x -= vel
 
     if keys[pygame.K_RIGHT] and x < 500 - width - vel:
-
         x += vel
 
-    """ if not(isJump):
+    if keys[pygame.K_UP] and y > vel:
+        y -= vel
+
+    if keys[pygame.K_DOWN] and y < (500 - height - vel):
+        y += vel
+    """if not(isJump):
 
         if keys[pygame.K_UP] and y > vel:
 
