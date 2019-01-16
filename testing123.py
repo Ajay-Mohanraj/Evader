@@ -70,4 +70,4 @@ while run:
     pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
     pygame.display.update()
 
-pygame.quit()
+pygame.quit() 1
