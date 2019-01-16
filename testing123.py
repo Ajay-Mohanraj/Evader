@@ -66,7 +66,7 @@ while run:
             isJump = False
             jumpCount = 10
 
-    win.fill((0, 0, 0))
+    win.fill((255, 255, 255))
     pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
     pygame.display.update()
 
