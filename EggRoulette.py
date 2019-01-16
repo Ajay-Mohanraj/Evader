@@ -2,6 +2,8 @@ import pygame
 import random
 import sys
 
+boiled_egg = pygame.image.load("egg.jpg")
+raw_egg = pygame.image.load("raw_egg.jpg")
 
 def main():
     pygame.init()
@@ -23,7 +25,8 @@ def main():
                 mouse_pos = event.pos
 
                 if button1.collidepoint(mouse_pos):
-                    return True
+                    while True:
+
 
 
 button1 = pygame.Rect(15, 15, 20, 10)
