@@ -94,10 +94,10 @@ while run:
     pygame.display.update()
 
 
-""" class Enemy(object):
+class Enemy(object):
 
     enemyList = [pygame.image.load('circle.png'), pygame.image.load('square.png'), pygame.image.load()]
     def __init__(self):
-    """
+
 
 pygame.quit()
