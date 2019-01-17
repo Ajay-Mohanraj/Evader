@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 win = pygame.display.set_mode((540, 525))
 pygame.display.set_caption('First Game')
-win.fill((255, 255, 255))
+
 
 x = 210
 y = 400
@@ -33,13 +33,13 @@ class Player(object):
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < 500 - self.w - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < 540 - self.w - self.vel:
                 self.x += self.vel
 
             if keys[pygame.K_UP] and self.y > self.vel:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN] and self.y < (500 - self.h - self.vel):
+            if keys[pygame.K_DOWN] and self.y < (525 - self.h - self.vel):
                 self.y += self.vel
             """if not(isJump):
         
@@ -89,13 +89,15 @@ while run:
             run = False
 
     player1 = Player(x, y, width, height, vel, "ohya.jpg")
+    win.fill((255, 255, 255))
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
 
 
 pygame.quit()
 
-class Enemy(object):
+""" class Enemy(object):
 
     def __init__(self):
+    """
 
