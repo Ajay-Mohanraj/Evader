@@ -4,7 +4,8 @@ pygame.init()
 win = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('First Game')
 
-class
+class Player(object):
+    def __init__(self):
 x = 210
 y = 400
 width = 40
@@ -80,5 +81,6 @@ pygame.quit()
 
 class Enemy(object):
 
+    enemyList = [pygame.image.load('circle.png'), pygame.image.load('square.png'), ]
     def __init__(self):
 
