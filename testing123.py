@@ -1,13 +1,17 @@
 import pygame
+import random
 
 pygame.init()
 win = pygame.display.set_mode((540, 525))
 pygame.display.set_caption('First Game')
-
+win_width = 540
+win_height = 525
 
 width = 40
 height = 60
 vel = 15
+
+BALL_SIZE = 25
 
 # The Player
 
@@ -74,11 +78,33 @@ class Player(object):
             """
 
 
+ball_list = []
 
-# The Projectiles
+
+class Ball:
+
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        self.y_vel = 0
+        self.x_vel = 0
+
+
+def make_ball():
+    ball = Ball()
+
+    ball.x = random.randrange(BALL_SIZE, win_width - BALL_SIZE)
+    ball.y = random.randrange(BALL_SIZE, win_height - BALL_SIZE)
+
+    ball_speed = random.randrange(1, 20)
+    ball.x_vel = ball_speed
+    ball.y_vel = ball_speed
+    return ball
+
 
 run = True
 player1 = Player(210, 400, width, height, vel, "ohya.jpg")
+
 while run:
 
     pygame.time.delay(50)
@@ -89,15 +115,15 @@ while run:
             run = False
     player1.work()
 
-    win.fill((255, 255, 255))
+    if len(ball_list) < 10:
+        ball = make_ball()
+        ball_list.append(ball)
+
+    win.fill((0, 255, 150))
+    for ball in ball_list:
+        pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
 
 
-class Enemy(object):
-
-    enemyList = [pygame.image.load('circle.png'), pygame.image.load('square.png'), pygame.image.load('triangle.png')]
-
-    def __init__(self):
-        pass
 pygame.quit()
