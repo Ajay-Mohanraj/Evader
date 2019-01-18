@@ -28,17 +28,17 @@ class Player(object):
 
             keys = pygame.key.get_pressed()
 
-            if keys[pygame.K_LEFT]: #and self.x > self.vel:
+            if keys[pygame.K_LEFT] and self.x > self.vel:
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT]: #and self.x < 540 - self.w - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < 100 - self.w - self.vel:
                 self.x += self.vel
 
-            if keys[pygame.K_UP]: #and self.y > self.vel:
+            if keys[pygame.K_UP] and self.y > self.vel:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN]: #and self.y < (525 - self.h - self.vel):
+            if keys[pygame.K_DOWN] and self.y < (500 - self.h - self.vel):
                 self.y += self.vel
             """if not(isJump):
         
