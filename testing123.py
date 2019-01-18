@@ -5,14 +5,14 @@ win = pygame.display.set_mode((540, 525))
 pygame.display.set_caption('First Game')
 
 
-x = 210
-y = 400
 width = 40
 height = 60
 vel = 15
 
 # The Player
+
 class Player(object):
+
     def __init__(self, x, y, width, height, velocity=10, image="ohya.jpg"):
         self.isJump = False
         self.jumpCount = 10
@@ -22,24 +22,23 @@ class Player(object):
         self.w = width
         self.h = height
         self.player = pygame.image.load(image)
-        self.work()
 
     def work(self):
 
 
             keys = pygame.key.get_pressed()
 
-            if keys[pygame.K_LEFT] and self.x > self.vel:
+            if keys[pygame.K_LEFT]: #and self.x > self.vel:
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < 540 - self.w - self.vel:
+            if keys[pygame.K_RIGHT]: #and self.x < 540 - self.w - self.vel:
                 self.x += self.vel
 
-            if keys[pygame.K_UP] and self.y > self.vel:
+            if keys[pygame.K_UP]: #and self.y > self.vel:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN] and self.y < (525 - self.h - self.vel):
+            if keys[pygame.K_DOWN]: #and self.y < (525 - self.h - self.vel):
                 self.y += self.vel
             """if not(isJump):
         
@@ -79,6 +78,7 @@ class Player(object):
 # The Projectiles
 
 run = True
+player1 = Player(210, 400, width, height, vel, "ohya.jpg")
 while run:
 
     pygame.time.delay(50)
@@ -87,8 +87,8 @@ while run:
 
         if event.type == pygame.QUIT:
             run = False
+    player1.work()
 
-    player1 = Player(x, y, width, height, vel, "ohya.jpg")
     win.fill((255, 255, 255))
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
@@ -96,8 +96,8 @@ while run:
 
 class Enemy(object):
 
-    enemyList = [pygame.image.load('circle.png'), pygame.image.load('square.png'), pygame.image.load()]
+    enemyList = [pygame.image.load('circle.png'), pygame.image.load('square.png'), pygame.image.load('triangle.png')]
+
     def __init__(self):
-
-
+        pass
 pygame.quit()
