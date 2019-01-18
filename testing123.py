@@ -4,12 +4,14 @@ pygame.init()
 win = pygame.display.set_mode((540, 525))
 pygame.display.set_caption('First Game')
 
-
+x = 210
+y = 400
 width = 40
 height = 60
 vel = 15
 
 # The Player
+
 
 class Player(object):
 
@@ -24,7 +26,6 @@ class Player(object):
         self.player = pygame.image.load(image)
 
     def work(self):
-
 
             keys = pygame.key.get_pressed()
 
@@ -78,11 +79,12 @@ class Player(object):
 # The Projectiles
 
 run = True
-player1 = Player(210, 400, width, height, vel, "ohya.jpg")
+player1 = Player(x, y, width, height, vel, "ohya.jpg")
 while run:
 
     pygame.time.delay(50)
-
+    pygame.draw.circle(win, (0, 0, 0), (0, 0), 2)
+    pygame.display.update()
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
@@ -93,11 +95,16 @@ while run:
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
 
+#circle = pygame.draw.circle(win, (0, 0, 0), (0, 0), 2, width=0)
+class Circle(object):
 
-class Enemy(object):
+    #circle = pygame.draw.circle(win, (0, 0, 0), (0, 0), 2, width=0)
 
-    enemyList = [pygame.image.load('circle.png'), pygame.image.load('square.png'), pygame.image.load('triangle.png')]
+    def __init__(self, x, y, width, height):
 
-    def __init__(self):
-        pass
+        self.x = x
+        self.y = y
+
+
+
 pygame.quit()
