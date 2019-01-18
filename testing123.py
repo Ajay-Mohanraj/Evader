@@ -32,7 +32,7 @@ class Player(object):
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < 100 - self.w - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < 500 - self.w - self.vel:
                 self.x += self.vel
 
             if keys[pygame.K_UP] and self.y > self.vel:
