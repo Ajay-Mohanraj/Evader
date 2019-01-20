@@ -9,6 +9,8 @@ win_height = 525
 
 font = pygame.font.Font(None, 25)
 
+x = 210
+y = 400
 width = 40
 height = 60
 vel = 15
@@ -16,6 +18,7 @@ vel = 15
 BALL_SIZE = 25
 
 # The Player
+
 
 class Player(object):
 
@@ -30,7 +33,6 @@ class Player(object):
         self.player = pygame.image.load(image)
 
     def work(self):
-
 
             keys = pygame.key.get_pressed()
 
@@ -105,8 +107,8 @@ def make_ball():
 
 
 run = True
-player1 = Player(210, 400, width, height, vel, "ohya.jpg")
 
+player1 = Player(x, y, width, height, vel, "ohya.jpg")
 while run:
 
     pygame.time.delay(50)
