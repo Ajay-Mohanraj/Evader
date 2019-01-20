@@ -13,16 +13,21 @@ x = 210
 y = 400
 width = 40
 height = 60
-vel = 15
+vel = 3
 
 BALL_SIZE = 25
+
+clock = pygame.time.Clock()
+frame_count = 0
+frame_rate = 60
+
 
 # The Player
 
 
 class Player(object):
 
-    def __init__(self, x, y, width, height, velocity=10, image="ohya.jpg"):
+    def __init__(self, x, y, width, height, velocity=2, image="ohya.jpg"):
         self.isJump = False
         self.jumpCount = 10
         self.x = x
@@ -93,6 +98,21 @@ class Ball:
         self.y_vel = 0
         self.x_vel = 0
 
+class Timer:
+    def __init__(self, frame_count, frame_rate):
+        self.frame_count = frame_count
+        self.frame_rate = frame_rate
+
+    def time_elapsed(self):
+        self.total_seconds = self.frame_count//self.frame_rate
+        self.minutes = self.total_seconds // 60
+        self.seconds = self.total_seconds % 60
+        self.minutes = str(self.minutes)
+        self.seconds = str(self.seconds)
+
+        return self.minutes + ":" + self.seconds
+
+
 
 def make_ball():
     ball = Ball()
@@ -100,7 +120,7 @@ def make_ball():
     ball.x = random.randrange(BALL_SIZE, win_width - BALL_SIZE)
     ball.y = random.randrange(BALL_SIZE, win_height - BALL_SIZE)
 
-    ball_speed = random.randrange(1, 20)
+    ball_speed = random.randrange(1, 3)
     ball.x_vel = ball_speed
     ball.y_vel = ball_speed
     return ball
@@ -108,20 +128,23 @@ def make_ball():
 
 run = True
 
+timer = Timer(frame_count, frame_rate)
 player1 = Player(x, y, width, height, vel, "ohya.jpg")
 while run:
-
-    pygame.time.delay(50)
-
+    pygame.time.delay(0)
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             run = False
     player1.work()
 
-    if len(ball_list) < 10:
+    time = font.render(timer.time_elapsed(), True, (0, 0, 0))
+    win.blit(time, (10, 10))
+
+    if timer.total_seconds % 10 == 0 and len(ball_list) < 10:
         ball = make_ball()
         ball_list.append(ball)
+
     win.fill((0, 255, 150))
     for ball in ball_list:
         # Move the ball's center
@@ -140,12 +163,11 @@ while run:
             run = False
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
-
+    timer.frame_count += 1
+    clock.tick(frame_rate)
 
 run = True
 while run:
-
-    pygame.time.delay(50)
 
     for event in pygame.event.get():
 
@@ -154,7 +176,18 @@ while run:
 
     pygame.display.set_caption("YOU LOST!")
     text = font.render("YOU GOT HIT!", True, (0, 0, 0))
-    win.blit(text, (win_width // 2, win_height // 2))
+
+    if timer.minutes == "1" and timer.seconds == "1":
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minute and " + timer.seconds + "second", True, (0, 0, 0))
+    elif timer.minutes == "1":
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minute and " + timer.seconds + "seconds", True, (0, 0, 0))
+    elif timer.seconds == "1":
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minutes and " + timer.seconds + "second", True, (0, 0, 0))
+    else:
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minutes and " + timer.seconds + "seconds", True, (0, 0, 0))
+
+    win.blit(other_text, ((win_width // 2) - 75, (win_height // 2) + 20))
+    win.blit(text, ((win_width // 2) - 30, win_height // 2))
     pygame.display.update()
 
 
