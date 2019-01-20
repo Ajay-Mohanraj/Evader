@@ -66,12 +66,16 @@ class Ball:
         self.y_vel = 0
         self.x_vel = 0
 
+
 class Timer:
+
     def __init__(self, frame_count, frame_rate):
+
         self.frame_count = frame_count
         self.frame_rate = frame_rate
 
     def time_elapsed(self):
+
         self.total_seconds = self.frame_count//self.frame_rate
         self.minutes = self.total_seconds // 60
         self.seconds = self.total_seconds % 60
@@ -83,6 +87,7 @@ class Timer:
 
 
 def make_ball():
+
     ball = Ball()
 
     ball.x = random.randrange(BALL_SIZE, win_width - BALL_SIZE)
@@ -104,6 +109,7 @@ while run:
 
         if event.type == pygame.QUIT:
             run = False
+
     player1.work()
 
     time = font.render(timer.time_elapsed(), True, (0, 0, 0))
