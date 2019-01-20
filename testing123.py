@@ -7,6 +7,8 @@ pygame.display.set_caption('First Game')
 win_width = 540
 win_height = 525
 
+font = pygame.font.Font(None, 25)
+
 width = 40
 height = 60
 vel = 15
@@ -118,10 +120,25 @@ while run:
     if len(ball_list) < 10:
         ball = make_ball()
         ball_list.append(ball)
-
     win.fill((0, 255, 150))
     for ball in ball_list:
+        # Move the ball's center
+        ball.x += ball.x_vel
+        ball.y += ball.y_vel
+
+        # Bounce the ball if needed
+        if ball.y > win_height - BALL_SIZE or ball.y < BALL_SIZE:
+            ball.y_vel *= -1
+        if ball.x > win_width - BALL_SIZE or ball.x < BALL_SIZE:
+            ball.x_vel *= -1
+    for ball in ball_list:
         pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
+        if (player1.x - 20) < ball.x < (player1.x + 20) and (player1.y - 30) < ball.y < (player1.y +30):
+            win.fill((255, 0, 0))
+            while True:
+                text = font.render("You died!", True, (0, 0, 0))
+                win.blit(text, (win_width // 2, win_height // 2))
+
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
 
