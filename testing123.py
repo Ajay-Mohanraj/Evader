@@ -152,13 +152,13 @@ while run:
     text = font.render("YOU GOT HIT!", True, (0, 0, 0))
 
     if timer.minutes == "1" and timer.seconds == "1":
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minute and " + timer.seconds + "second", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " second", True, (0, 0, 0))
     elif timer.minutes == "1":
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minute and " + timer.seconds + "seconds", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " seconds", True, (0, 0, 0))
     elif timer.seconds == "1":
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minutes and " + timer.seconds + "second", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " second", True, (0, 0, 0))
     else:
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minutes and " + timer.seconds + "seconds", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " seconds", True, (0, 0, 0))
 
     win.blit(other_text, ((win_width // 2) - 75, (win_height // 2) + 20))
     win.blit(text, ((win_width // 2) - 30, win_height // 2))
