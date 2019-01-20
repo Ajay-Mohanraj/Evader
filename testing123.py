@@ -135,13 +135,26 @@ while run:
             ball.x_vel *= -1
     for ball in ball_list:
         pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
-        if (player1.x - 20) < ball.x < (player1.x + 20) and (player1.y - 30) < ball.y < (player1.y +30):
+        if (player1.x - 20) < ball.x < (player1.x + 20) and (player1.y - 30) < ball.y < (player1.y + 30):
             win.fill((255, 0, 0))
-            while True:
-                text = font.render("You died!", True, (0, 0, 0))
-                win.blit(text, (win_width // 2, win_height // 2))
-
+            run = False
     win.blit(player1.player, (player1.x, player1.y))
+    pygame.display.update()
+
+
+run = True
+while run:
+
+    pygame.time.delay(50)
+
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            run = False
+
+    pygame.display.set_caption("YOU LOST!")
+    text = font.render("YOU GOT HIT!", True, (0, 0, 0))
+    win.blit(text, (win_width // 2, win_height // 2))
     pygame.display.update()
 
 
