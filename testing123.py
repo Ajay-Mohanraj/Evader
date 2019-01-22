@@ -2,17 +2,17 @@ import pygame
 import random
 
 pygame.init()
-win = pygame.display.set_mode((540, 525))
+win = pygame.display.set_mode((900, 900))
 pygame.display.set_caption('First Game')
-win_width = 540
-win_height = 525
+win_width = 900
+win_height = 900
 
 font = pygame.font.Font(None, 25)
 
 x = 210
 y = 400
-width = 40
-height = 60
+width = 88
+height = 96
 vel = 3
 
 BALL_SIZE = 25
@@ -106,13 +106,11 @@ timer = Timer(frame_count, frame_rate)
 player1 = Player(x, y, width, height, vel, "ohya.jpg")
 
 while run:
-
-    pygame.time.delay(0)
+    clock.tick(frame_rate)
 
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
-
             run = False
 
     player1.work()
@@ -120,10 +118,10 @@ while run:
     time = font.render(timer.time_elapsed(), True, (0, 0, 0))
     win.blit(time, (10, 10))
 
-    if timer.total_seconds % 10 == 0 and len(ball_list) < 10:
-
-        ball = make_ball()
-        ball_list.append(ball)
+    if timer.total_seconds % 10 == 0:
+        if len(ball_list) < 10:
+            ball = make_ball()
+            ball_list.append(ball)
 
     win.fill((0, 255, 150))
 
@@ -135,21 +133,20 @@ while run:
 
         # Bounce the ball if needed
         if ball.y > win_height - BALL_SIZE or ball.y < BALL_SIZE:
-
             ball.y_vel *= -1
 
         if ball.x > win_width - BALL_SIZE or ball.x < BALL_SIZE:
-
             ball.x_vel *= -1
 
     for ball in ball_list:
 
-        pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
-
-        if (player1.x - 22) < ball.x < (player1.x + 22) and (player1.y - 32) < ball.y < (player1.y + 32):
-
+        if ((player1.x - 44) < ball.x - 12.5 < (player1.x + 44) or (player1.x - 44) < ball.x + 12.5 < (player1.x + 44)) and ((player1.y - 48) < ball.y - 12.5 < (player1.y + 48) or (player1.y - 48) < ball.y + 12.5 < (player1.y + 48)):
             win.fill((255, 0, 0))
             run = False
+
+        else:
+
+            pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
 
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
@@ -158,8 +155,6 @@ while run:
 
 run = True
 while run:
-
-    pygame.time.delay(100)
 
     for event in pygame.event.get():
 
@@ -170,19 +165,15 @@ while run:
     text = font.render("YOU GOT HIT!", True, (0, 0, 0))
 
     if timer.minutes == "1" and timer.seconds == "1":
-
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " second", True, (0, 0, 0))
 
     elif timer.minutes == "1":
-
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " seconds", True, (0, 0, 0))
 
     elif timer.seconds == "1":
-
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " second", True, (0, 0, 0))
 
     else:
-
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " seconds", True, (0, 0, 0))
 
     win.blit(other_text, ((win_width // 2) - 75, (win_height // 2) + 20))
