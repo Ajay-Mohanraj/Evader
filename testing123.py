@@ -131,7 +131,7 @@ run = True
 timer = Timer(frame_count, frame_rate)
 player1 = Player(x, y, width, height, vel, "ohya.jpg")
 while run:
-    pygame.time.delay(0)
+    clock.tick(frame_rate)
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
@@ -141,9 +141,10 @@ while run:
     time = font.render(timer.time_elapsed(), True, (0, 0, 0))
     win.blit(time, (10, 10))
 
-    if timer.total_seconds % 10 == 0 and len(ball_list) < 10:
-        ball = make_ball()
-        ball_list.append(ball)
+    if timer.total_seconds % 10 == 0:
+        if len(ball_list) < 10:
+            ball = make_ball()
+            ball_list.append(ball)
 
     win.fill((0, 255, 150))
     for ball in ball_list:
@@ -158,7 +159,7 @@ while run:
             ball.x_vel *= -1
     for ball in ball_list:
         pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
-        if (player1.x - 20) < ball.x < (player1.x + 20) and (player1.y - 30) < ball.y < (player1.y + 30):
+        if ((player1.x - 20) < ball.x - 12.5 < (player1.x + 20) or (player1.x - 20) < ball.x + 12.5 < (player1.x + 20)) and ((player1.y - 30) < ball.y - 12.5 < (player1.y + 30) or (player1.y - 30) < ball.y + 12.5 < (player1.y + 30)):
             win.fill((255, 0, 0))
             run = False
     win.blit(player1.player, (player1.x, player1.y))
