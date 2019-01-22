@@ -53,38 +53,6 @@ class Player(object):
 
             if keys[pygame.K_DOWN] and self.y < (500 - self.h - self.vel):
                 self.y += self.vel
-            """if not(isJump):
-        
-                if keys[pygame.K_UP] and y > vel:
-        
-                    y -= vel
-        
-                if keys[pygame.K_DOWN]and y < (500 - height - vel):
-        
-                    y += vel
-        
-                if keys[pygame.K_SPACE]:
-        
-                    isJump = True
-        
-            else:
-        
-                if jumpCount >= -10:
-        
-                    neg = 1
-        
-                    if jumpCount < 0:
-        
-                        neg = -1
-        
-                    y -= (jumpCount ** 2) ** 0.5 * neg
-                    jumpCount -= 1
-        
-            else:
-        
-                isJump = False
-                jumpCount = 10
-            """
 
 
 ball_list = []
@@ -98,12 +66,16 @@ class Ball:
         self.y_vel = 0
         self.x_vel = 0
 
+
 class Timer:
+
     def __init__(self, frame_count, frame_rate):
+
         self.frame_count = frame_count
         self.frame_rate = frame_rate
 
     def time_elapsed(self):
+
         self.total_seconds = self.frame_count//self.frame_rate
         self.minutes = self.total_seconds // 60
         self.seconds = self.total_seconds % 60
@@ -115,6 +87,7 @@ class Timer:
 
 
 def make_ball():
+
     ball = Ball()
 
     ball.x = random.randrange(BALL_SIZE, win_width - BALL_SIZE)
@@ -136,6 +109,7 @@ while run:
 
         if event.type == pygame.QUIT:
             run = False
+
     player1.work()
 
     time = font.render(timer.time_elapsed(), True, (0, 0, 0))
@@ -179,13 +153,13 @@ while run:
     text = font.render("YOU GOT HIT!", True, (0, 0, 0))
 
     if timer.minutes == "1" and timer.seconds == "1":
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minute and " + timer.seconds + "second", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " second", True, (0, 0, 0))
     elif timer.minutes == "1":
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minute and " + timer.seconds + "seconds", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " seconds", True, (0, 0, 0))
     elif timer.seconds == "1":
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minutes and " + timer.seconds + "second", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " second", True, (0, 0, 0))
     else:
-        other_text = font.render("YOU SURVIVED: " + timer.minutes + "minutes and " + timer.seconds + "seconds", True, (0, 0, 0))
+        other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " seconds", True, (0, 0, 0))
 
     win.blit(other_text, ((win_width // 2) - 75, (win_height // 2) + 20))
     win.blit(text, ((win_width // 2) - 30, win_height // 2))
