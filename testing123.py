@@ -132,7 +132,7 @@ while run:
             ball.x_vel *= -1
     for ball in ball_list:
         pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
-        if (player1.x - 20) < ball.x < (player1.x + 20) and (player1.y - 30) < ball.y < (player1.y + 30):
+        if (player1.x - 23) < ball.x < (player1.x + 23) and (player1.y - 33) < ball.y < (player1.y + 33):
             win.fill((255, 0, 0))
             run = False
     win.blit(player1.player, (player1.x, player1.y))
@@ -143,6 +143,7 @@ while run:
 run = True
 while run:
 
+    pygame.time.delay(100)
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
