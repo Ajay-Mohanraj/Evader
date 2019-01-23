@@ -107,6 +107,7 @@ run = True
 timer = Timer(frame_count, frame_rate)
 player1 = Player(x, y, ohya_radius, vel, "ohya-1.png")
 
+
 while run:
     clock.tick(frame_rate)
 
@@ -142,10 +143,9 @@ while run:
 
     for ball in ball_list:
 
-        if ((player1.x - 44) <= ball.x - 12.5 <= (player1.x + 44) or (player1.x - 44) <= ball.x + 12.5 <= (player1.x + 44)) and ((player1.y - 48) <= ball.y - 12.5 <= (player1.y + 48) or (player1.y - 48) <= ball.y + 12.5 <= (player1.y + 48)):
-            win.fill((255, 255, 255))
+        if ((((player1.x - ball.x) ** 2) + ((player1.x - ball.x) ** 2)) ** 1/2) < player1.r + BALL_SIZE:
+            win.fill((255, 0, 0))
             run = False
-
         else:
 
             pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
