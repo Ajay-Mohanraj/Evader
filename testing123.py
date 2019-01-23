@@ -28,7 +28,7 @@ frame_rate = 60
 
 class Player(object):
 
-    def __init__(self, x, y, width, height, velocity=2, image="ohyabest.png"):
+    def __init__(self, x, y, width, height, velocity=2, image="ohya.jpg"):
 
         self.isJump = False
         self.jumpCount = 10
@@ -104,7 +104,7 @@ def make_ball():
 run = True
 
 timer = Timer(frame_count, frame_rate)
-player1 = Player(x, y, width, height, vel, "ohyabest.png")
+player1 = Player(x, y, width, height, vel, "ohya.jpg")
 
 while run:
     clock.tick(frame_rate)
