@@ -14,6 +14,7 @@ x = 210
 y = 400
 width = 88
 height = 96
+radius = 4
 vel = 3
 
 BALL_SIZE = 25
@@ -28,7 +29,11 @@ frame_rate = 60
 
 class Player(object):
 
-    def __init__(self, x, y, width, height, velocity=2, image="ohya.jpg"):
+
+
+
+    def __init__(self, x, y, width, height, radius, velocity=2, image="ohyabest.png"):
+
 
         self.isJump = False
         self.jumpCount = 10
@@ -37,6 +42,7 @@ class Player(object):
         self.vel = velocity
         self.w = width
         self.h = height
+        self.r = radius
         self.player = pygame.image.load(image)
 
     def work(self):
@@ -104,7 +110,8 @@ def make_ball():
 run = True
 
 timer = Timer(frame_count, frame_rate)
-player1 = Player(x, y, width, height, vel, "ohya.jpg")
+
+player1 = Player(x, y, width, height, radius, vel, "ohyabest.png")
 
 while run:
     clock.tick(frame_rate)
@@ -141,10 +148,9 @@ while run:
 
     for ball in ball_list:
 
-        if ((player1.x - 44) <= ball.x - 12.5 <= (player1.x + 44) or (player1.x - 44) <= ball.x + 12.5 <= (player1.x + 44)) and ((player1.y - 48) <= ball.y - 12.5 <= (player1.y + 48) or (player1.y - 48) <= ball.y + 12.5 <= (player1.y + 48)):
+        if ((((player1.x - ball.x) ** 2) + ((player1.x - ball.x) ** 2)) ** 1/2) < player1.r + BALL_SIZE:
             win.fill((255, 0, 0))
             run = False
-
         else:
 
             pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
