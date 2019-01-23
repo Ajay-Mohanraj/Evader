@@ -103,7 +103,7 @@ def make_ball():
 run = True
 
 timer = Timer(frame_count, frame_rate)
-player1 = Player(x, y, width, height, vel, "ohya.jpg")
+player1 = Player(x, y, width, height, vel, "ohyabest.png")
 
 while run:
     clock.tick(frame_rate)
