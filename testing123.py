@@ -14,7 +14,7 @@ x = 210
 y = 400
 width = 88
 height = 96
-radius = 4
+radius = 10
 vel = 3
 
 BALL_SIZE = 25
