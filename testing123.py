@@ -2,7 +2,7 @@ import pygame
 import random
 
 pygame.init()
-win = pygame.display.set_mode((1920, 1080))
+win = pygame.display.set_mode((500, 540))
 pygame.display.set_caption('First Game')
 win_width = 900
 win_height = 900
