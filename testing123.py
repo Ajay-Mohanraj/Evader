@@ -4,6 +4,8 @@ import random
 win_width = 500
 win_height = 540
 
+ohya_radius = 43.5
+
 pygame.init()
 win = pygame.display.set_mode((win_width, win_height))
 pygame.display.set_caption('First Game')
@@ -28,15 +30,14 @@ frame_rate = 60
 
 class Player(object):
 
-    def __init__(self, x, y, width, height, velocity=2, image="ohya.jpg"):
+    def __init__(self, x, y, radius, velocity=2, image="ohya-1.png"):
 
         self.isJump = False
         self.jumpCount = 10
         self.x = x
         self.y = y
         self.vel = velocity
-        self.w = width
-        self.h = height
+        self.r = radius
         self.player = pygame.image.load(image)
 
     def work(self):
@@ -47,13 +48,13 @@ class Player(object):
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < win_width - self.w - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < win_width - self.r - self.vel:
                 self.x += self.vel
 
             if keys[pygame.K_UP] and self.y > win_height - self.vel:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN] and self.y < win_height - self.h - self.vel:
+            if keys[pygame.K_DOWN] and self.y < win_height - self.r - self.vel:
                 self.y += self.vel
 
 
@@ -104,7 +105,7 @@ def make_ball():
 run = True
 
 timer = Timer(frame_count, frame_rate)
-player1 = Player(x, y, width, height, vel, "ohya.jpg")
+player1 = Player(x, y, ohya_radius, vel, "ohya-1.png")
 
 while run:
     clock.tick(frame_rate)
@@ -124,7 +125,7 @@ while run:
             ball = make_ball()
             ball_list.append(ball)
 
-    win.fill((0, 255, 150))
+    win.fill((255, 255, 255))
 
     for ball in ball_list:
 
@@ -142,7 +143,7 @@ while run:
     for ball in ball_list:
 
         if ((player1.x - 44) <= ball.x - 12.5 <= (player1.x + 44) or (player1.x - 44) <= ball.x + 12.5 <= (player1.x + 44)) and ((player1.y - 48) <= ball.y - 12.5 <= (player1.y + 48) or (player1.y - 48) <= ball.y + 12.5 <= (player1.y + 48)):
-            win.fill((255, 0, 0))
+            win.fill((255, 255, 255))
             run = False
 
         else:
