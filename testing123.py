@@ -27,7 +27,7 @@ frame_rate = 60
 
 class Player(object):
 
-    def __init__(self, x, y, width, height, velocity=2, image="ohya.jpg"):
+    def __init__(self, x, y, width, height, velocity=2, image="ohyabest.png"):
 
         self.isJump = False
         self.jumpCount = 10
