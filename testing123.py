@@ -1,11 +1,12 @@
 import pygame
 import random
 
+win_width = 500
+win_height = 540
+
 pygame.init()
-win = pygame.display.set_mode((500, 540))
+win = pygame.display.set_mode((win_width, win_height))
 pygame.display.set_caption('First Game')
-win_width = 900
-win_height = 900
 
 font = pygame.font.Font(None, 25)
 
@@ -42,17 +43,17 @@ class Player(object):
 
             keys = pygame.key.get_pressed()
 
-            if keys[pygame.K_LEFT] and self.x > 900 - self.vel:
+            if keys[pygame.K_LEFT] and self.x > win_width - self.vel:
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < 900 - self.w - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < win_width - self.w - self.vel:
                 self.x += self.vel
 
-            if keys[pygame.K_UP] and self.y > 900 - self.vel:
+            if keys[pygame.K_UP] and self.y > win_height - self.vel:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN] and self.y < (900 - self.h - self.vel):
+            if keys[pygame.K_DOWN] and self.y < win_height - self.h - self.vel:
                 self.y += self.vel
 
 
