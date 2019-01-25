@@ -6,7 +6,7 @@ win_height = 540
 
 pygame.init()
 win = pygame.display.set_mode((win_width, win_height))
-pygame.display.set_caption('First Game')
+pygame.display.set_caption('')
 
 font = pygame.font.Font(None, 25)
 
@@ -32,7 +32,7 @@ class Player(object):
 
 
 
-    def __init__(self, x, y, width, height, radius, velocity=2, image="ohyabest.png"):
+    def __init__(self, x, y, width, height, radius, velocity=2, image="THEGRACEOFOHYA.png"):
 
 
         self.isJump = False
@@ -111,7 +111,7 @@ run = True
 
 timer = Timer(frame_count, frame_rate)
 
-player1 = Player(x, y, width, height, radius, vel, "ohyabest.png")
+player1 = Player(x, y, width, height, radius, vel, "THEGRACEOFOHYA.png")
 
 while run:
     clock.tick(frame_rate)
