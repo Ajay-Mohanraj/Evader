@@ -1,8 +1,9 @@
 import pygame
 import random
+import math
 
-win_width = 500
-win_height = 540
+win_width = 750
+win_height = 860
 
 ohya_radius = 111
 
@@ -12,10 +13,8 @@ pygame.display.set_caption('First Game')
 
 font = pygame.font.Font(None, 25)
 
-x = 210
-y = 400
-width = 88
-height = 96
+x = 375
+y = 300
 vel = 3
 
 BALL_SIZE = 25
@@ -30,7 +29,7 @@ frame_rate = 60
 
 class Player(object):
 
-    def __init__(self, x, y, radius, velocity=2, image="ohya-1.png"):
+    def __init__(self, x, y, radius, velocity=2, image="OHYATHEGOD.png"):
 
         self.isJump = False
         self.jumpCount = 10
@@ -44,17 +43,17 @@ class Player(object):
 
             keys = pygame.key.get_pressed()
 
-            if keys[pygame.K_LEFT] and self.x > win_width - self.vel:
+            if keys[pygame.K_LEFT] and self.x > 0:
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < win_width - self.r - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < win_width - self.r:
                 self.x += self.vel
 
-            if keys[pygame.K_UP] and self.y > win_height - self.vel:
+            if keys[pygame.K_UP] and self.y > 0:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN] and self.y < win_height - self.r - self.vel:
+            if keys[pygame.K_DOWN] and self.y < win_height - self.r:
                 self.y += self.vel
 
 
@@ -105,7 +104,7 @@ def make_ball():
 run = True
 
 timer = Timer(frame_count, frame_rate)
-player1 = Player(x, y, ohya_radius, vel, "ohya-1.png")
+player1 = Player(x, y, ohya_radius, vel, "OHYATHEGOD.png")
 
 
 while run:
@@ -124,6 +123,8 @@ while run:
     if timer.total_seconds % 10 == 0:
         if len(ball_list) < 10:
             ball = make_ball()
+            # while math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= ohya_radius + (BALL_SIZE / 2):
+                # ball = make_ball()
             ball_list.append(ball)
 
     win.fill((0, 255, 150))
@@ -143,7 +144,7 @@ while run:
 
     for ball in ball_list:
 
-        if ((((player1.x - ball.x) ** 2) + ((player1.x - ball.x) ** 2)) ** 1/2) < player1.r + BALL_SIZE:
+        if math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= (BALL_SIZE / 2) + ohya_radius:
             win.fill((255, 0, 0))
             run = False
         else:
