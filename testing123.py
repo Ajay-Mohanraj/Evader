@@ -4,7 +4,7 @@ import random
 win_width = 500
 win_height = 540
 
-ohya_radius = 43.5
+ohya_radius = 111
 
 pygame.init()
 win = pygame.display.set_mode((win_width, win_height))
@@ -126,7 +126,7 @@ while run:
             ball = make_ball()
             ball_list.append(ball)
 
-    win.fill((255, 255, 255))
+    win.fill((0, 255, 150))
 
     for ball in ball_list:
 
