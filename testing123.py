@@ -142,6 +142,7 @@ while run:
         if ball.x > win_width - BALL_SIZE or ball.x < BALL_SIZE:
             ball.x_vel *= -1
 
+
     for ball in ball_list:
 
         if math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= (BALL_SIZE / 2) + ohya_radius:
