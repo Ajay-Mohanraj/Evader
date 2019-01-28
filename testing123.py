@@ -123,8 +123,8 @@ while run:
     if timer.total_seconds % 10 == 0:
         if len(ball_list) < 10:
             ball = make_ball()
-            # while math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= ohya_radius + (BALL_SIZE / 2):
-                # ball = make_ball()
+            while math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= ohya_radius + (BALL_SIZE / 2):
+                ball = make_ball()
             ball_list.append(ball)
 
     win.fill((0, 255, 150))
