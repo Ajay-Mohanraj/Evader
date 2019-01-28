@@ -104,8 +104,8 @@ def make_ball():
 run = True
 
 timer = Timer(frame_count, frame_rate)
-player1 = Player(x, y, ohya_radius, vel, "OHYATHEGOD.png")
 
+player1 = Player(x, y, ohya_radius, vel, "THEGRACEOFOHYA.png")
 
 while run:
     clock.tick(frame_rate)
