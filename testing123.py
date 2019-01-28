@@ -14,7 +14,7 @@ x = 210
 y = 400
 width = 88
 height = 96
-radius = 10
+radius = 20
 vel = 3
 
 BALL_SIZE = 25
@@ -32,7 +32,7 @@ class Player(object):
 
 
 
-    def __init__(self, x, y, width, height, radius, velocity=2, image="THEGRACEOFOHYA.png"):
+    def __init__(self, x, y, radius, velocity=2, image="THEGRACEOFOHYA.png"):
 
 
         self.isJump = False
@@ -40,8 +40,6 @@ class Player(object):
         self.x = x
         self.y = y
         self.vel = velocity
-        self.w = width
-        self.h = height
         self.r = radius
         self.player = pygame.image.load(image)
 
@@ -49,17 +47,17 @@ class Player(object):
 
             keys = pygame.key.get_pressed()
 
-            if keys[pygame.K_LEFT] and self.x > win_width - self.vel:
+            if keys[pygame.K_LEFT] and self.x > self.r:
 
                 self.x -= self.vel
 
-            if keys[pygame.K_RIGHT] and self.x < win_width - self.w - self.vel:
+            if keys[pygame.K_RIGHT] and self.x < win_width - self.r:
                 self.x += self.vel
 
-            if keys[pygame.K_UP] and self.y > win_height - self.vel:
+            if keys[pygame.K_UP] and self.y > self.r:
                 self.y -= self.vel
 
-            if keys[pygame.K_DOWN] and self.y < win_height - self.h - self.vel:
+            if keys[pygame.K_DOWN] and self.y < win_height - self.r:
                 self.y += self.vel
 
 
@@ -111,7 +109,7 @@ run = True
 
 timer = Timer(frame_count, frame_rate)
 
-player1 = Player(x, y, width, height, radius, vel, "THEGRACEOFOHYA.png")
+player1 = Player(x, y, radius, vel, "THEGRACEOFOHYA.png")
 
 while run:
     clock.tick(frame_rate)
