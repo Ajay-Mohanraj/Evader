@@ -5,7 +5,7 @@ import math
 win_width = 750
 win_height = 860
 
-ohya_radius = 50
+ohya_radius = 20
 
 pygame.init()
 win = pygame.display.set_mode((win_width, win_height))
@@ -123,8 +123,8 @@ while run:
     if timer.total_seconds % 10 == 0:
         if len(ball_list) < 10:
             ball = make_ball()
-            while math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= ohya_radius + (BALL_SIZE / 2):
-                ball = make_ball()
+            # while math.sqrt(abs(player1.x - ball.x) ^ 2 + abs(player1.y - ball.y) ^ 2) <= ohya_radius + (BALL_SIZE / 2):
+                # ball = make_ball()
             ball_list.append(ball)
 
     win.fill((0, 255, 150))
@@ -142,14 +142,11 @@ while run:
         if ball.x > win_width - BALL_SIZE or ball.x < BALL_SIZE:
             ball.x_vel *= -1
 
-
     for ball in ball_list:
 
         if math.sqrt(abs(player1.x - ball.x) ** 2 + abs(player1.y - ball.y) ** 2) <= (BALL_SIZE / 2) + ohya_radius:
-
             win.fill((255, 0, 0))
             run = False
-
         else:
 
             pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
