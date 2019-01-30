@@ -154,7 +154,6 @@ while run:
     win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
     timer.frame_count += 1
-    clock.tick(frame_rate)
 
 run = True
 while run:
