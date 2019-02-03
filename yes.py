@@ -123,8 +123,8 @@ while run:
     if timer.total_seconds % 10 == 0:
         if len(ball_list) < 10:
             ball = make_ball()
-            '''while math.sqrt(abs(player1.x - ball.x) ** 2 + abs(player1.y - ball.y) ** 2) <= ohya_radius + (BALL_SIZE / 2):
-                ball = make_ball()'''
+            while math.sqrt(((player1.x + ohya_radius) - (ball.x + BALL_SIZE / 2)) ** 2 + ((player1.y + ohya_radius) - (ball.y + BALL_SIZE / 2)) ** 2) <= ohya_radius + (BALL_SIZE / 2):
+                ball = make_ball()
             ball_list.append(ball)
 
     win.fill((0, 255, 150))
@@ -142,16 +142,17 @@ while run:
         if ball.x > win_width - BALL_SIZE or ball.x < BALL_SIZE:
             ball.x_vel *= -1
 
+    win.blit(player1.player, (player1.x, player1.y))
+
     for ball in ball_list:
 
-        if math.sqrt(abs(player1.x - ball.x) ** 2 + abs(player1.y - ball.y) ** 2) <= (BALL_SIZE / 2) + ohya_radius:
+        if math.sqrt(((player1.x + ohya_radius) - (ball.x + BALL_SIZE / 2)) ** 2 + ((player1.y + ohya_radius) - (ball.y + BALL_SIZE / 2)) ** 2) <= (BALL_SIZE / 2) + ohya_radius:
             win.fill((255, 0, 0))
             run = False
         else:
 
             pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
 
-    win.blit(player1.player, (player1.x, player1.y))
     pygame.display.update()
     timer.frame_count += 1
 
