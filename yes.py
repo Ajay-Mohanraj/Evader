@@ -2,8 +2,8 @@ import pygame
 import random
 import math
 
-win_width = 750
-win_height = 860
+win_width = 700
+win_height = 700
 
 ohya_radius = 20
 
@@ -15,9 +15,9 @@ font = pygame.font.Font(None, 25)
 
 x = 375
 y = 300
-vel = 3
+vel = 4
 
-BALL_SIZE = 25
+BALL_SIZE = 30
 
 clock = pygame.time.Clock()
 frame_count = 0
@@ -95,7 +95,7 @@ def make_ball():
     ball.x = random.randrange(BALL_SIZE, win_width - BALL_SIZE)
     ball.y = random.randrange(BALL_SIZE, win_height - BALL_SIZE)
 
-    ball_speed = random.randrange(1, 3)
+    ball_speed = random.randrange(3, 5)
     ball.x_vel = ball_speed
     ball.y_vel = ball_speed
     return ball
@@ -121,7 +121,7 @@ while run:
     win.blit(time, (10, 10))
 
     if timer.total_seconds % 10 == 0:
-        if len(ball_list) < 10:
+        if len(ball_list) < 12:
             ball = make_ball()
             while math.sqrt(((player1.x + 29) - ball.x) ** 2 + ((player1.y + 30) - ball.y) ** 2) <= ohya_radius + BALL_SIZE:
                 ball = make_ball()
