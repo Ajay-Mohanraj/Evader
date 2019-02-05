@@ -108,11 +108,13 @@ timer = Timer(frame_count, frame_rate)
 player1 = Player(x, y, ohya_radius, vel, "THEGRACEOFOHYA.png")
 
 while run:
+
     clock.tick(frame_rate)
 
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
+
             run = False
 
     player1.work()
@@ -121,10 +123,15 @@ while run:
     win.blit(time, (10, 10))
 
     if timer.total_seconds % 10 == 0:
+
         if len(ball_list) < 12:
+
             ball = make_ball()
+
             while math.sqrt(((player1.x + 29) - ball.x) ** 2 + ((player1.y + 30) - ball.y) ** 2) <= ohya_radius + BALL_SIZE:
+
                 ball = make_ball()
+
             ball_list.append(ball)
 
     win.fill((0, 255, 150))
@@ -137,9 +144,11 @@ while run:
 
         # Bounce the ball if needed
         if ball.y > win_height - BALL_SIZE or ball.y < BALL_SIZE:
+
             ball.y_vel *= -1
 
         if ball.x > win_width - BALL_SIZE or ball.x < BALL_SIZE:
+
             ball.x_vel *= -1
 
     win.blit(player1.player, (player1.x, player1.y))
@@ -147,8 +156,10 @@ while run:
     for ball in ball_list:
 
         if math.sqrt(((player1.x + 29) - ball.x) ** 2 + ((player1.y + 30) - ball.y) ** 2) <= BALL_SIZE + ohya_radius:
+
             win.fill((255, 0, 0))
             run = False
+
         else:
 
             pygame.draw.circle(win, (255, 0, 0), (ball.x, ball.y), BALL_SIZE)
@@ -157,26 +168,32 @@ while run:
     timer.frame_count += 1
 
 run = True
+
 while run:
 
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
+
             run = False
 
     pygame.display.set_caption("YOU LOST!")
     text = font.render("YOU GOT HIT!", True, (0, 0, 0))
 
     if timer.minutes == "1" and timer.seconds == "1":
+
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " second", True, (0, 0, 0))
 
     elif timer.minutes == "1":
+
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minute and " + timer.seconds + " seconds", True, (0, 0, 0))
 
     elif timer.seconds == "1":
+
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " second", True, (0, 0, 0))
 
     else:
+
         other_text = font.render("YOU SURVIVED: " + timer.minutes + " minutes and " + timer.seconds + " seconds", True, (0, 0, 0))
 
     win.blit(other_text, ((win_width // 2) - 75, (win_height // 2) + 20))
